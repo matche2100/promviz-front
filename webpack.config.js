@@ -14,24 +14,22 @@ module.exports = {
     filename: 'vizceral.[hash].bundle.js'
   },
   resolve: {
-    extensions: ['', '.jsx', '.js'],
-    modulesDirectories: ['node_modules'],
-    fallback: path.join(__dirname, 'node_modules')
+    extensions: ['.jsx', '.js'],
+    modules: ['node_modules'],
   },
-  resolveLoader: { fallback: path.join(__dirname, 'node_modules') },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       { test: /\.woff2?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.otf$/, loader: 'file-loader' },
       { test: /\.ttf$/, loader: 'file-loader' },
       { test: /\.eot$/, loader: 'file-loader' },
       { test: /\.svg$/, loader: 'file-loader' },
-      { test: /\.html$/, loader: 'html' },
+      { test: /\.html$/, loader: 'html-loader' },
       { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
