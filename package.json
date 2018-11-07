@@ -44,7 +44,7 @@
     "source-sans-pro": "^2.0.10",
     "superagent": "^3.8.3",
     "tween.js": "^16.3.5",
-    "vizceral-react": "~4.6.5",
+    "vizceral-react": "git+https://github.com/matche2100/vizceral-react.git",
     "webfontloader": "^1.6.26"
   },
   "devDependencies": {
