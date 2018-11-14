@@ -17,3 +17,6 @@ node_modules
 # Temporary Files and Backups
 *.swp
 *.*~
+
+# External Vizceral Source Package
+vizceral

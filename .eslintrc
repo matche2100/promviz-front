@@ -25,6 +25,8 @@
     "import/extensions": [1, "never"],
     "import/no-unresolved": 0,
     "import/no-webpack-loader-syntax": 0,
+    "import/no-extraneous-dependencies":[error,{devDependencies: true}],
+    "prefer-destructuring": ["error",{"array": false, "object": false}],
     "no-plusplus": 0,
     "no-var": 1,
     "space-before-function-paren": [1, "always"],
