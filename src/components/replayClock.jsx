@@ -1,11 +1,13 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import OptionsPanel from './optionsPanel';
 
 import './replayClock.css';
 
+/* eslint no-restricted-globals: off */
 class ReplayClock extends React.Component {
   static defaultProps = {
     offsetChanged: () => {}
@@ -86,7 +88,7 @@ class ReplayClock extends React.Component {
     const dateToString = (date) => {
       const format = value => (`0${value}`).slice(-2);
       return `${date.getFullYear()}/${format(date.getMonth() + 1)}/${format(date.getDate())
-            } ${format(date.getHours())}:${format(date.getMinutes())}:${format(date.getSeconds())}`;
+      } ${format(date.getHours())}:${format(date.getMinutes())}:${format(date.getSeconds())}`;
     };
 
     const offsetToString = (offset) => {
@@ -101,7 +103,7 @@ class ReplayClock extends React.Component {
 
     return (
       <div className="clock">
-        <OptionsPanel title={dateToString(currentDate) + ' ' + diffString} ref={(panel) => { this.panel = panel; }}>
+        <OptionsPanel title={`${dateToString(currentDate)} ${diffString}`} ref={(panel) => { this.panel = panel; }}>
           <div className="input-group offset-time">
             <input type="text" className={this.state.error ? 'form-control error' : 'form-control'} value={this.state.inputValue} onChange={event => this.offsetChanged(event.currentTarget.value)} defaultValue='' onKeyPress={event => this.keyPressed(event)} placeholder="2016/4/11 00:00:00" />
             <span className="input-group-btn">
@@ -118,9 +120,9 @@ class ReplayClock extends React.Component {
 }
 
 ReplayClock.propTypes = {
-  time: React.PropTypes.number.isRequired,
-  maxOffset: React.PropTypes.number.isRequired,
-  offsetChanged: React.PropTypes.func
+  time: PropTypes.number.isRequired,
+  maxOffset: PropTypes.number.isRequired,
+  offsetChanged: PropTypes.func
 };
 
 export default ReplayClock;

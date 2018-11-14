@@ -8,6 +8,12 @@ var Dotenv = require('dotenv-webpack');
 module.exports = {
   devtool: 'source-map',
   entry: './src/app.jsx',
+  mode: process.env.NODE_ENV || 'development',
+  performance: {
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
+      hints: process.env.NODE_ENV === 'production' ? "warning": false
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
@@ -18,7 +24,7 @@ module.exports = {
     modules: ['node_modules'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

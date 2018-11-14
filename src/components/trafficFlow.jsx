@@ -3,6 +3,7 @@
 import _ from 'lodash';
 import { Alert } from 'react-bootstrap';
 import React from 'react';
+import PropTypes from 'prop-types';
 import TWEEN from 'tween.js'; // Start TWEEN updates for sparklines and loading screen fading out
 import 'vizceral-react/dist/vizceral.css';
 import keypress from 'keypress.js';
@@ -413,9 +414,9 @@ class TrafficFlow extends React.Component {
 }
 
 TrafficFlow.propTypes = {
-  src: React.PropTypes.string.isRequired,
-  interval: React.PropTypes.number,
-  maxReplayOffset: React.PropTypes.number
+  src: PropTypes.string.isRequired,
+  interval: PropTypes.number,
+  maxReplayOffset: PropTypes.number
 };
 
 export default TrafficFlow;

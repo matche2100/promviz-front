@@ -3,7 +3,7 @@
 import _ from 'lodash';
 
 import Vizceral from 'vizceral-react';
-import React from 'react';
+import PropTypes from 'prop-types';
 
 class CustomVizceral extends Vizceral {
   constructor (props) {
@@ -49,7 +49,7 @@ class CustomVizceral extends Vizceral {
 }
 
 CustomVizceral.propTypes = {
-  styles: React.PropTypes.object
+  styles: PropTypes.object
 };
 
 export default CustomVizceral;

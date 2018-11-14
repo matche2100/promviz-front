@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
@@ -64,9 +65,9 @@ class ServerStatus extends React.Component {
 }
 
 ServerStatus.propTypes = {
-  endpoint: React.PropTypes.string.isRequired,
-  status: React.PropTypes.string.isRequired,
-  clientUpdatedTime: React.PropTypes.number
+  endpoint: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  clientUpdatedTime: PropTypes.number
 };
 
 export default ServerStatus;

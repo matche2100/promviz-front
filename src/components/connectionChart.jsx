@@ -2,11 +2,13 @@
 
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ReactHighcharts from 'react-highcharts';
 
 import trafficStore from './trafficStore';
 
+/* eslint no-restricted-globals: off */
 const defaultConfig = {
   global: {
     timezoneOffset: (new Date()).getTimezoneOffset()
@@ -127,9 +129,9 @@ class ConnectionChart extends React.Component {
       connection: nextProps.connection
     });
 
-    if (!this.state.initialized ||
-        this.state.connection.source.name !== nextProps.connection.source.name ||
-        this.state.connection.target.name !== nextProps.connection.target.name) {
+    if (!this.state.initialized
+        || this.state.connection.source.name !== nextProps.connection.source.name
+        || this.state.connection.target.name !== nextProps.connection.target.name) {
       const history = this.getHistory(
         nextProps.region || this.state.region,
         nextProps.connection.source.name,
@@ -171,9 +173,9 @@ class ConnectionChart extends React.Component {
 }
 
 ConnectionChart.propTypes = {
-  region: React.PropTypes.string.isRequired,
-  connection: React.PropTypes.object.isRequired,
-  config: React.PropTypes.object
+  region: PropTypes.string.isRequired,
+  connection: PropTypes.object.isRequired,
+  config: PropTypes.object
 };
 
 export default ConnectionChart;

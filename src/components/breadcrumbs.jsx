@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import './breadcrumbs.css';
 
 class Breadcrumbs extends React.Component {
@@ -52,9 +54,9 @@ class Breadcrumbs extends React.Component {
 }
 
 Breadcrumbs.propTypes = {
-  rootTitle: React.PropTypes.string.isRequired,
-  navigationStack: React.PropTypes.array.isRequired,
-  navigationCallback: React.PropTypes.func.isRequired
+  rootTitle: PropTypes.string.isRequired,
+  navigationStack: PropTypes.array.isRequired,
+  navigationCallback: PropTypes.func.isRequired
 };
 
 export default Breadcrumbs;
