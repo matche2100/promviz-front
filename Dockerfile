@@ -1,4 +1,4 @@
-FROM mhart/alpine-node
+FROM node:8.12-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -10,6 +10,9 @@ RUN npm install
 
 # Bundle app source
 COPY . /usr/src/app
+
+RUN npm install ./vizceral
+RUN npm install ./vizceral-react
 
 EXPOSE 8080
 CMD [ "npm", "run", "start" ]
