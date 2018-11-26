@@ -23,9 +23,9 @@ const nameRenderer = function (data) {
     <span className={data.rowData.className} style={{ color: data.rowData.color }}>
       {data.cellData}
       {
-        mostSevereNotice ?
-        <span style={styles} className={className} />
-        : undefined
+        mostSevereNotice
+          ? <span style={styles} className={className} />
+          : undefined
       }
     </span>);
 };
@@ -119,26 +119,26 @@ class ConnectionList extends React.Component {
 
 
     return (
-      connectionRows.length > 0 ?
-      <div className="connection-list">
-        <Table
-          ref="flexTable"
-          width={300}
-          height={tableHeight}
-          headerHeight={headerHeight}
-          rowHeight={25}
-          rowCount={connectionRows.length}
-          rowGetter={({ index }) => connectionRows[index]}
-          sortBy={this.state.sortBy}
-          sortDirection={this.state.sortDirection}
-          sort={this.sort}
-        >
-          <Column label="Service" dataKey="name" cellRenderer={nameRenderer} width={150} />
-          <Column label="RPS" dataKey="total" cellRenderer={totalRenderer} width={70} />
-          <Column label="Errors" dataKey="errorRate" cellRenderer={errorRenderer} width={70}/>
-        </Table>
-      </div>
-      : <span>None.</span>
+      connectionRows.length > 0
+        ? <div className="connection-list">
+          <Table
+            ref="flexTable"
+            width={300}
+            height={tableHeight}
+            headerHeight={headerHeight}
+            rowHeight={25}
+            rowCount={connectionRows.length}
+            rowGetter={({ index }) => connectionRows[index]}
+            sortBy={this.state.sortBy}
+            sortDirection={this.state.sortDirection}
+            sort={this.sort}
+          >
+            <Column label="Service" dataKey="name" cellRenderer={nameRenderer} width={150} />
+            <Column label="RPS" dataKey="total" cellRenderer={totalRenderer} width={70} />
+            <Column label="Errors" dataKey="errorRate" cellRenderer={errorRenderer} width={70}/>
+          </Table>
+        </div>
+        : <span>None.</span>
     );
   }
 

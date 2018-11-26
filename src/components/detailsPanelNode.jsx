@@ -43,20 +43,20 @@ class DetailsPanelNode extends React.Component {
       <div className="details-panel">
         <div className="subsection">
           <div className="details-panel-title">{node.getName()} <span className="text-muted">{node.class}</span>
-            { node && node.nodes && node.nodes.length > 0 ?
-            <span title={zoomTitle} className={zoomClassName} onClick={this.props.zoomCallback}></span>
-            : undefined}
+            { node && node.nodes && node.nodes.length > 0
+              ? <span title={zoomTitle} className={zoomClassName} onClick={this.props.zoomCallback}></span>
+              : undefined}
           </div>
           <div className="details-panel-close" onClick={this.props.closeCallback}>
             <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </div>
         </div>
         <Notices notices={notices} />
-        { node && !node.isEntryNode() ?
-        <DetailsSubpanel title="Incoming Connections" badge={node.incomingConnections.length}>
-          <ConnectionList key={node.getName()} connections={node.incomingConnections} direction="incoming" nodeClicked={clickedNode => this.props.nodeClicked(clickedNode)} />
-        </DetailsSubpanel>
-        : undefined }
+        { node && !node.isEntryNode()
+          ? <DetailsSubpanel title="Incoming Connections" badge={node.incomingConnections.length}>
+            <ConnectionList key={node.getName()} connections={node.incomingConnections} direction="incoming" nodeClicked={clickedNode => this.props.nodeClicked(clickedNode)} />
+          </DetailsSubpanel>
+          : undefined }
         <DetailsSubpanel title="Outgoing Connections" badge={node.outgoingConnections.length}>
           <ConnectionList key={node.getName()} connections={node.outgoingConnections} direction="outgoing" nodeClicked={clickedNode => this.props.nodeClicked(clickedNode)} />
         </DetailsSubpanel>

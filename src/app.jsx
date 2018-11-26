@@ -14,10 +14,11 @@ import TrafficFlow from './components/trafficFlow';
 const updateURL = process.env.UPDATE_URL;
 const interval = Number(process.env.INTERVAL);
 const maxReplayOffset = Number(process.env.MAX_REPLAY_OFFSET);
+const postPositionURL = process.env.POSITION_POST_URL;
 
 function fontsActive () {
   ReactDOM.render(
-    <TrafficFlow src={updateURL} interval={interval} maxReplayOffset={maxReplayOffset} />,
+    <TrafficFlow src={updateURL} interval={interval} maxReplayOffset={maxReplayOffset} postPositionURL={postPositionURL} />,
     document.getElementById('traffic')
   );
 }
