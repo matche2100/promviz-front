@@ -4,7 +4,7 @@
   "description": "promviz front",
   "author": "Yusuke Otsuka <mjhd.devlion@gmail.com>",
   "scripts": {
-    "postinstall": "bash vizceral_build.sh",
+    "postinstall": "sh vizceral_build.sh",
     "vizceral-install": "npm install ./vizceral",
     "clean": "rimraf dist && mkdirp dist",
     "lint": "eslint src --ext .js --ext .jsx --fix",
@@ -46,6 +46,8 @@
     "source-sans-pro": "^2.0.10",
     "superagent": "^3.8.3",
     "tween.js": "^16.3.5",
+    "vizceral": "file:vizceral",
+    "vizceral-react": "file:vizceral-react",
     "webfontloader": "^1.6.26"
   },
   "devDependencies": {

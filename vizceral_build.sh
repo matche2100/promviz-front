@@ -1,4 +1,4 @@
-#!/bin/bash -
+#!/bin/sh -
 
 BASE_DIR=$(pwd)
 VIZCERAL_REPOSITORY="https://github.com/matche2100/vizceral.git"
@@ -7,9 +7,9 @@ VIZCERAL_DIR="vizceral"
 VIZCERAL_REACT_DIR="vizceral-react"
 
 
-function install_vizceral() {
+install_vizceral() {
 
-  if [[ -d ${VIZCERAL_DIR} ]]; then
+  if [ -d ${VIZCERAL_DIR} ]; then
     echo "${BASE_DIR}/${VIZCERAL_DIR} directory exists, skipping."
     return 0
   fi
@@ -18,7 +18,7 @@ function install_vizceral() {
 
   result=$?
 
-  if [[ result -ne 0 ]]; then
+  if [ ${result} -ne 0 ]; then
      echo 'git command abnormally ends, exit 1.'
      return 1
   fi
@@ -33,9 +33,9 @@ function install_vizceral() {
   return 0
 }
 
-function install_vizceral_react() {
+install_vizceral_react() {
 
-  if [[ -d ${VIZCERAL_REACT_DIR} ]]; then
+  if [ -d ${VIZCERAL_REACT_DIR} ]; then
     echo "${BASE_DIR}/${VIZCERAL_REACT_DIR} directory exists, skipping."
     return 0
   fi
@@ -44,7 +44,7 @@ function install_vizceral_react() {
 
   result=$?
 
-  if [[ result -ne 0 ]]; then
+  if [ ${result} -ne 0 ]; then
      echo 'git command abnormally ends, exit 1.'
      return 1
   fi
@@ -61,14 +61,14 @@ function install_vizceral_react() {
 
 result=$(install_vizceral)
 
-if [[ result -ne 0 ]]; then
+if [ ${result} -ne 0 ]; then
    echo 'vizceral install abnormally end. abort.'
    exit 1
 fi
 
 result=$(install_vizceral_react)
 
-if [[ result -ne 0 ]]; then
+if [ ${result} -ne 0 ]; then
    echo 'vizceral-react install abnormally end. abort'
    exit 1
 fi
