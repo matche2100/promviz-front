@@ -70,7 +70,7 @@ fi
 
 install_vizceral_react
 
-result=#?
+result=$?
 
 if [ ${result} -ne 0 ]; then
    echo 'vizceral-react install abnormally end. abort'
