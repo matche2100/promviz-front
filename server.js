@@ -10,4 +10,4 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
-app.listen('192.168.56.120',PORT);
+app.listen('',PORT);
