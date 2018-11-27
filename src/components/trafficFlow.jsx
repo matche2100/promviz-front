@@ -52,7 +52,7 @@ class TrafficFlow extends React.Component {
 
   constructor (props) {
     super(props);
-    
+
     console.debug(props.postPositionURL);
     this.state = {
       currentView: undefined,
