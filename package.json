@@ -4,8 +4,7 @@
   "description": "promviz front",
   "author": "Yusuke Otsuka <mjhd.devlion@gmail.com>",
   "scripts": {
-    "postinstall": "sh vizceral_build.sh",
-    "vizceral-install": "npm install ./vizceral",
+    "preinstall": "sh vizceral_build.sh",
     "clean": "rimraf dist && mkdirp dist",
     "lint": "eslint src --ext .js --ext .jsx --fix",
     "copy:fonts": "cpx \"./node_modules/source-sans-pro/**/*\" ./dist/fonts",
@@ -17,7 +16,7 @@
     "start": "npm run dist && node server.js"
   },
   "engines": {
-    "node": "~8.2.0"
+    "node": "~8.13.0"
   },
   "license": "Apache-2.0",
   "dependencies": {
