@@ -33,7 +33,7 @@ function install_vizceral() {
   return 0
 }
 
-function vizceral_react_install() {
+function install_vizceral_react() {
 
   if [[ -d ${VIZCERAL_REACT_DIR} ]]; then
     echo "${BASE_DIR}/${VIZCERAL_REACT_DIR} directory exists, skipping."
@@ -59,14 +59,14 @@ function vizceral_react_install() {
   return 0
 }
 
-result = $(vizceral_install)
+result = $(install_vizceral)
 
 if [[ result -ne 0 ]]; then
    echo 'vizceral install abnormally end. abort.'
    exit 1
 fi
 
-result = $(vizceral_react_install)
+result = $(install_vizceral_react)
 
 if [[ result -ne 0 ]]; then
    echo 'vizceral-react install abnormally end. abort'
