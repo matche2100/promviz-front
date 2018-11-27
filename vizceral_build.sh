@@ -59,14 +59,14 @@ function install_vizceral_react() {
   return 0
 }
 
-result = $(install_vizceral)
+result=$(install_vizceral)
 
 if [[ result -ne 0 ]]; then
    echo 'vizceral install abnormally end. abort.'
    exit 1
 fi
 
-result = $(install_vizceral_react)
+result=$(install_vizceral_react)
 
 if [[ result -ne 0 ]]; then
    echo 'vizceral-react install abnormally end. abort'
