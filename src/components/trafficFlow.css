@@ -18,3 +18,13 @@
   -ms-user-select: none;
   user-select: none;
 }
+.justify {
+   display: flex;
+   justify-content: space-around;
+}
+.reset-layout-link {
+   display: flex;
+   padding-left: 15px;
+   padding-top:  2px;
+   justify-content: flex-end;
+}

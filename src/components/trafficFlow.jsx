@@ -27,10 +27,14 @@ import ServerStatus from './serverStatus';
 import filterActions from './filterActions';
 import filterStore from './filterStore';
 
+import NodeControls from './nodeControls';
+
 import trafficActions from './trafficActions';
 import trafficStore from './trafficStore';
 
 import AppConstants from '../appConstants';
+
+import utils from '../utils';
 
 const listener = new keypress.Listener();
 
@@ -53,12 +57,12 @@ class TrafficFlow extends React.Component {
   constructor (props) {
     super(props);
 
-    console.debug(props.postPositionURL);
     this.state = {
       currentView: undefined,
       redirectedFrom: undefined,
       selectedChart: undefined,
       postPositionURL: props.postPositionURL,
+      resetNodePosition: false,
       displayOptions: {
         allowDraggingOfNodes: false,
         showLabels: true
@@ -331,6 +335,25 @@ class TrafficFlow extends React.Component {
     }
   }
 
+  resetNodePositionClicked = () => {
+    const g = this.state.currentGraph;
+
+    if (g == null) {
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', this.state.postPositionURL);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.send(JSON.stringify({ Path: utils.getGraphPath(g).join('.') }));
+
+    g._relayout();
+
+    /* eslint-disable-line no-restricted-globals */
+    location.reload();
+  }
+
   dismissAlert = () => {
     this.setState({ redirectedFrom: undefined });
   }
@@ -365,11 +388,14 @@ class TrafficFlow extends React.Component {
           <ReplayClock time={this.state.serverUpdatedTime} maxOffset={this.props.maxReplayOffset * 1000} offsetChanged={offset => this.offsetChanged(offset) } />
           <ServerStatus endpoint={this.props.src} status={this.state.serverStatus} clientUpdatedTime={this.state.clientUpdatedTime} />
           <div style={{ float: 'right', paddingTop: '4px' }}>
-            { (!globalView && matches) && <Locator changeCallback={this.locatorChanged} searchTerm={this.state.searchTerm} matches={matches} clearFilterCallback={this.filtersCleared} /> }
-            <OptionsPanel title="Filters"><FilterControls /></OptionsPanel>
-            <OptionsPanel title="Display"><DisplayOptions options={this.state.displayOptions} changedCallback={this.displayOptionsChanged} /></OptionsPanel>
-            <OptionsPanel title="Physics"><PhysicsOptions options={this.state.currentGraph_physicsOptions} changedCallback={this.physicsOptionsChanged}/></OptionsPanel>
-            <a role="button" className="reset-layout-link" onClick={this.resetLayoutButtonClicked}>Reload Layout</a><br />
+            <div className="justify">
+              { (!globalView && matches) && <Locator changeCallback={this.locatorChanged} searchTerm={this.state.searchTerm} matches={matches} clearFilterCallback={this.filtersCleared} /> }
+              <OptionsPanel title="Filters"><FilterControls /></OptionsPanel>
+              <OptionsPanel title="Display"><DisplayOptions options={this.state.displayOptions} changedCallback={this.displayOptionsChanged} /></OptionsPanel>
+              <OptionsPanel title="Physics"><PhysicsOptions options={this.state.currentGraph_physicsOptions} changedCallback={this.physicsOptionsChanged}/></OptionsPanel>
+              <OptionsPanel title="Nodes"><NodeControls resetNodePositionCallback={this.resetNodePositionClicked} /></OptionsPanel>
+              <a role="button" className="reset-layout-link" onClick={this.resetLayoutButtonClicked}>Reload Layout</a><br />
+            </div>
           </div>
         </div>
         <div className="service-traffic-map">
