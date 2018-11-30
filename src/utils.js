@@ -1,16 +1,14 @@
 
-class utils {
- getGraphPath (currentGraph) {
-  const graphPath = [];
+exports.getGraphPath = function(currentGraph) {
 
-  if (!currentGraph) {
-    return [];
+    const graphPath = [];
+
+    if (!currentGraph) {
+      return [];
+    }
+
+    graphPath.unshift(currentGraph.name);
+
+    return this.getGraphPath(currentGraph.parentGraph).concat(graphPath);
   }
 
-  graphPath.unshift(currentGraph.name);
-
-  return this.getGraphPath(currentGraph.parentGraph).concat(graphPath);
- }
-}
-
-export default utils;

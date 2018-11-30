@@ -34,8 +34,6 @@ import trafficStore from './trafficStore';
 
 import AppConstants from '../appConstants';
 
-import utils from '../utils';
-
 const listener = new keypress.Listener();
 
 const hasOwnPropFunc = Object.prototype.hasOwnProperty;
@@ -343,6 +341,8 @@ class TrafficFlow extends React.Component {
     }
 
     const xhr = new XMLHttpRequest();
+    var utils = require('../utils.js');
+
     xhr.open('DELETE', this.state.postPositionURL);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
@@ -350,8 +350,7 @@ class TrafficFlow extends React.Component {
 
     g._relayout();
 
-    /* eslint-disable-line no-restricted-globals */
-    location.reload();
+    location.reload(); /* eslint-disable-line no-restricted-globals */
   }
 
   dismissAlert = () => {
